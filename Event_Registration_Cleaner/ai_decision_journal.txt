@@ -1,0 +1,118 @@
+EVENT REGISTRATION CLEANER
+AI DECISION JOURNAL
+==============================
+
+
+1. WHY AN LLM WAS USED
+
+Gemini was used for information extraction because registration
+messages can be written in different formats such as form-style
+entries and WhatsApp-style messages.
+
+The LLM extracts:
+- name
+- phone
+- email
+- year
+- branch
+
+
+2. WHY PYTHON WAS USED
+
+Python was used for validation and decision-making because these
+rules must be deterministic and verifiable.
+
+Python performs:
+- field validation
+- data cleaning
+- duplicate detection
+- status classification
+- report generation
+
+
+3. IMPORTANT DESIGN DECISION
+
+The LLM is not allowed to correct phone numbers or email addresses.
+
+For example, if a phone number is invalid, Gemini must return the
+original value instead of guessing the correct number.
+
+This prevents the system from inventing information.
+
+
+4. EXTRACTION AND VALIDATION WERE SEPARATED
+
+Gemini extracts facts.
+
+Python validates those facts.
+
+This separation makes the system easier to test and reduces the
+risk of incorrect AI-generated corrections.
+
+
+5. DUPLICATE DETECTION DECISION
+
+Duplicates are checked after Python cleaning.
+
+For example:
+
++91 98400 12345
+9840012345
+
+Both become:
+
+9840012345
+
+Therefore they are treated as the same phone number.
+
+
+6. RED-TEAM TESTING DECISION
+
+Three red-team tests were created.
+
+Test 1 checked whether Gemini would incorrectly fix an invalid phone
+number.
+
+Test 2 checked whether an instruction hidden inside a registration
+entry could change Gemini's extraction.
+
+Test 3 checked whether duplicate phone numbers written in different
+formats could still be detected.
+
+
+7. TEST RESULTS
+
+Normal validation tests:
+5 out of 5 passed.
+
+Red-team tests:
+3 out of 3 passed.
+
+Full dataset:
+20 registrations processed.
+
+14 registrations were valid.
+
+6 registrations needed fixing.
+
+
+8. HUMAN CHECKPOINT
+
+The system produces a clean list and a problem list for human review.
+
+A human should review registrations marked NEEDS_FIX before using
+the data for event communication or registration.
+
+
+9. FINAL DESIGN PRINCIPLE
+
+The system follows a simple responsibility split:
+
+LLM:
+Extract facts.
+
+Python:
+Check facts and make decisions.
+
+Human:
+Review uncertain/problematic records.

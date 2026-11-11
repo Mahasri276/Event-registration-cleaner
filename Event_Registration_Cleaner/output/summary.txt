@@ -1,0 +1,21 @@
+EVENT REGISTRATION CLEANER SUMMARY
+=================================
+
+Total registrations: 20
+Valid registrations: 14
+Needs fix: 6
+
+Valid registrations by branch:
+AIDS: 1
+CIVIL: 1
+CSE: 4
+ECE: 2
+EEE: 2
+IT: 3
+MECH: 1
+
+Valid registrations by year:
+Year 1: 3
+Year 2: 4
+Year 3: 3
+Year 4: 4

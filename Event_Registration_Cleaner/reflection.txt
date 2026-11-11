@@ -1,0 +1,15 @@
+Reflection – Event Registration Cleaner
+
+The Event Registration Cleaner project helped me understand how Artificial Intelligence and normal Python programming can work together to solve a practical problem. The main purpose of the project is to process messy student event registration messages and identify valid, incomplete, invalid, and duplicate registrations.
+
+In this project, I used an LLM only for extracting information from unstructured registration messages. The LLM extracts five fields: student name, phone number, email address, year, and branch. The extracted information is returned in JSON format. An important rule in my project is that the LLM must not invent or correct information. For example, if a phone number is incomplete or invalid, the LLM should not change it into a valid phone number.
+
+Python is responsible for the important decision-making after extraction. It cleans names, validates phone numbers and email addresses, checks the year and branch, and detects duplicate registrations. Phone and email values are cleaned only through rules that can be verified. Duplicate detection is performed after cleaning the phone numbers and email addresses. Registrations are classified as VALID or NEEDS_FIX based on the validation results.
+
+Testing was an important part of the project. I created five normal test cases to check phone cleaning, phone validation, email cleaning, email validation, and valid phone validation. All five tests passed. I also created three red-team tests. These checked whether the LLM would incorrectly fix a phone number, follow an instruction embedded inside a registration message, or fail to detect a duplicate written in a different format. All three red-team tests passed.
+
+The project also includes a human review step. Entries marked as NEEDS_FIX are not silently corrected by the system. The event team can check the problematic registrations and contact students when confirmation is required.
+
+Through this project, I learned that an LLM should not be given complete control over data validation and decision-making. It is useful for understanding unstructured text, while Python is better suited for predictable rules, validation, duplicate detection, and final decisions. I also learned the importance of testing AI systems with both normal and adversarial inputs.
+
+The project gave me practical experience in combining AI with traditional programming. It also taught me about responsible AI use, validation, human review, API usage, testing, and maintaining a clear separation between AI extraction and program-based decisions.

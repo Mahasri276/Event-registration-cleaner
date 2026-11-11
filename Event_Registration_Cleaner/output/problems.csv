@@ -1,0 +1,7 @@
+id,status,reasons,original_entry
+R11,NEEDS_FIX,Duplicate phone; Duplicate email,"Name: Priya K, phone +91 98400 12345, email priya.k@gmail.com, 2nd yr CSE"
+R12,NEEDS_FIX,Invalid phone,"Name: Sanjay T, ph 1234567890, email sanjay.t@gmail.com, 1st year EEE"
+R13,NEEDS_FIX,Invalid email,"Name: Kavya M, phone 9876543211, email kavya.gmail.com, 2nd year AIDS"
+R14,NEEDS_FIX,Invalid phone,"Name: Manoj R, phone 998877665, email manoj.r@gmail.com, 3rd year MECH"
+R16,NEEDS_FIX,Missing year,"Name: Deepak P, phone 9876543213, email deepak.p@gmail.com, 5th year ECE"
+R17,NEEDS_FIX,Invalid branch,"Name: Nithya K, phone 9876543214, email nithya.k@gmail.com, 2nd year BIO"

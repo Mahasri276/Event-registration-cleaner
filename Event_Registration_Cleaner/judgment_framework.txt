@@ -1,0 +1,169 @@
+EVENT REGISTRATION CLEANER
+JUDGMENT FRAMEWORK
+==============================
+
+Purpose:
+The judgment framework defines how the system decides whether a
+registration is valid or needs fixing.
+
+
+1. EXTRACTION
+
+Question:
+Did Gemini correctly extract the five required fields?
+
+Fields:
+- name
+- phone
+- email
+- year
+- branch
+
+Decision:
+If information is not present, Gemini should return null.
+Gemini must not invent missing information.
+
+
+2. NAME VALIDATION
+
+Rule:
+Name must not be empty and must contain alphabetic characters.
+
+Cleaning:
+- Remove unnecessary spaces.
+- Convert to title case.
+
+Example:
+"  PRIYA   K  " -> "Priya K"
+
+
+3. PHONE VALIDATION
+
+Rule:
+Phone must contain exactly 10 digits after permitted cleaning.
+
+Cleaning:
+- Remove spaces.
+- Remove hyphens.
+- Remove "+".
+- Remove leading 91 when appropriate.
+- Remove leading 0 when appropriate.
+
+Valid phone:
+9840012345
+
+Invalid phone:
+1234567890
+
+
+4. EMAIL VALIDATION
+
+Rule:
+Email must:
+- contain one @ symbol
+- contain a dot after @
+- contain no spaces
+- be non-empty
+
+Cleaning:
+- Remove leading/trailing spaces.
+- Convert to lowercase.
+
+Example:
+" PRIYA.K@gmail.com " -> "priya.k@gmail.com"
+
+Invalid example:
+"kavya.gmail.com"
+
+
+5. YEAR VALIDATION
+
+Valid years:
+1, 2, 3, 4
+
+Conversions:
+1st year -> 1
+II year -> 2
+III year -> 3
+IV year -> 4
+final year -> 4
+
+Example:
+5th year -> Invalid
+
+
+6. BRANCH VALIDATION
+
+Allowed branches:
+
+CSE
+IT
+AIDS
+ECE
+EEE
+MECH
+CIVIL
+
+Example:
+BIO -> Invalid
+
+
+7. DUPLICATE DETECTION
+
+A registration is considered a duplicate when its cleaned phone
+number OR cleaned email address has already appeared.
+
+Example:
+
+Registration 1:
++91 98400 12345
+
+Registration 2:
+9840012345
+
+Both clean to:
+9840012345
+
+Therefore Registration 2 is marked as a duplicate.
+
+
+8. FINAL DECISION
+
+VALID:
+
+All required fields are present.
+All fields pass validation.
+The registration is not a duplicate.
+
+NEEDS_FIX:
+
+At least one validation problem exists,
+a required field is missing,
+or the registration is a duplicate.
+
+
+9. HUMAN CHECKPOINT
+
+The final cleaned data and problem list should be reviewed by a human
+before the data is used for event registration or communication.
+
+The system does not silently correct uncertain information.
+
+
+10. RESPONSIBILITY SPLIT
+
+Gemini:
+- Extract facts only.
+
+Python:
+- Validate fields.
+- Clean verifiable formatting.
+- Detect duplicates.
+- Decide VALID or NEEDS_FIX.
+- Generate reports.
+
+
+11. FINAL SAFETY PRINCIPLE
+
+The system must never invent or silently repair phone numbers or
+email addresses.

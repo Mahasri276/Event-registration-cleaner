@@ -1,0 +1,15 @@
+id,name,phone,email,year,branch
+R01,Priya K,9840012345,priya.k@gmail.com,2,CSE
+R02,Arun Kumar,9876543210,arun.kumar@yahoo.com,3,ECE
+R03,Karthik V,9123456789,karthik.v@gmail.com,1,IT
+R04,Divya S,9988776655,divya.s@gmail.com,4,AIDS
+R05,Rahul M,8765432109,rahul.m@yahoo.com,2,MECH
+R06,Sneha R,7654321098,sneha.r@gmail.com,4,EEE
+R07,Ajay Kumar,9123456780,ajay.kumar@gmail.com,1,CIVIL
+R08,Meena P,8877665544,meena.p@gmail.com,3,CSE
+R09,Vijay S,9988776654,vijay.s@yahoo.com,2,ECE
+R10,Anitha R,7654321090,anitha.r@gmail.com,4,IT
+R15,Ramya S,9876543212,ramya.s@gmail.com,4,CSE
+R18,Hari V,9876543215,hari.v@gmail.com,1,IT
+R19,Swetha R,9876543216,swetha.r@gmail.com,3,CSE
+R20,Gokul M,9876543217,gokul.m@gmail.com,2,EEE

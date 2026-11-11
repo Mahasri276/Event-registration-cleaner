@@ -1,0 +1,80 @@
+EVENT REGISTRATION CLEANER
+COST AND LATENCY NOTE
+==============================
+
+
+1. LLM USAGE
+
+Gemini is used only for extracting five fields from each registration:
+
+- name
+- phone
+- email
+- year
+- branch
+
+
+2. API CALLS
+
+The system makes one Gemini extraction request for each registration.
+
+For the current dataset:
+
+Total registrations = 20
+
+Therefore:
+
+Approximately 20 Gemini API requests are made during a complete run.
+
+
+3. COST
+
+The project was developed and tested using the Gemini API.
+
+The exact cost depends on the selected Gemini model, token usage,
+and the API provider's current pricing.
+
+No cost is calculated manually in this project because pricing can
+change over time.
+
+
+4. LATENCY
+
+Each registration requires an API request to Gemini.
+
+Therefore, processing time depends on:
+- network speed
+- Gemini API response time
+- number of registrations
+- model response length
+
+
+5. PERFORMANCE DESIGN
+
+Only the extraction task is given to the LLM.
+
+Validation, cleaning, duplicate detection, counting, and report
+generation are performed locally using Python.
+
+This reduces unnecessary LLM usage and keeps deterministic tasks
+outside the model.
+
+
+6. SCALING
+
+For a larger number of registrations, the number of Gemini API
+requests will increase if one request is made per registration.
+
+A future optimization could batch multiple extraction requests when
+appropriate, while still preserving the required JSON structure and
+validation rules.
+
+
+7. CONCLUSION
+
+The current implementation is suitable for the 20-registration
+project dataset.
+
+The main trade-off is that LLM calls introduce network latency and
+possible API costs, while providing flexible extraction from messy
+registration formats.
